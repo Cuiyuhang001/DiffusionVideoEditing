@@ -91,7 +91,7 @@ if __name__ == '__main__':
     # [Todo]: multi GPU on multi machine
     if opt['distributed']:
         ngpus_per_node = len(opt['gpu_ids']) # or torch.cuda.device_count()
-        opt['world_size'] = ngpus_per_node
+        opt['world_size'] = ngpus_per_node # gpu数量
         opt['init_method'] = 'tcp://127.0.0.1:'+ args.port 
         mp.spawn(main_worker, nprocs=ngpus_per_node, args=(ngpus_per_node, opt))
     else:
